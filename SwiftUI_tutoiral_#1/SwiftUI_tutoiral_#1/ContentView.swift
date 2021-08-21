@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State
+    private var isActive: Bool = false
+    
     var body: some View {
         HStack {
             MyVStackView()
@@ -15,7 +19,11 @@ struct ContentView: View {
             MyVStackView()
         }
         .padding(10)
-        .background(Color.black)
+        .background(isActive ? Color.white : Color.black)
+        .onTapGesture {
+            print("👋 HStack Tapped !!")
+            self.isActive.toggle()
+        }
     }
 }
 

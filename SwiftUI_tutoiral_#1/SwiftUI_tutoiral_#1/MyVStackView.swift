@@ -23,7 +23,7 @@ struct MyVStackView: View {
                 .bold()
                 .foregroundColor(.white)
         }
-        .background(Color.gray)
+        .background(Color.pink)
     }
 }
 
