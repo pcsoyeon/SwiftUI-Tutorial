@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State
-    private var isActive: Bool = false
+    private var isActivated: Bool = false
     
     var body: some View {
         
@@ -18,23 +18,23 @@ struct ContentView: View {
             
             VStack {
                 HStack {
-                    MyVStackView()
-                    MyVStackView()
-                    MyVStackView()
+                    MyVStackView(isActivated: $isActivated)
+                    MyVStackView(isActivated: $isActivated)
+                    MyVStackView(isActivated: $isActivated)
                 }
-                .padding(isActive ? 50 : 10)
-                .background(isActive ? Color.white : Color.black)
+                .padding(isActivated ? 50 : 10)
+                .background(isActivated ? Color.white : Color.black)
                 .onTapGesture {
                     print("👋 HStack Tapped")
                     
                     withAnimation {
-                        self.isActive.toggle()
+                        self.isActivated.toggle()
                     }
                 } // HStack
                 
                 // Navigation Button(link)
                 NavigationLink(
-                    destination: MyTextView()) {
+                    destination: MyTextView(isActivated: $isActivated)) {
                     Text("네비게이션")
                         .fontWeight(.heavy)
                         .font(.system(size: 30))
