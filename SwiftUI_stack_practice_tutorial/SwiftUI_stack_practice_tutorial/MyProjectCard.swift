@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct MyProjectCard: View {
+    
+    // struct는 (class)와 다르게 값이 고정되어 있으므로 State를 통해 상태 변경
+    @State
+    var shouldShowAlert: Bool = false
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Rectangle()
@@ -44,14 +49,21 @@ struct MyProjectCard: View {
                 
                 Spacer()
                 
-                Text("확인")
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(width: 80)
-                    .background(Color.blue)
-                    .cornerRadius(18)
-                    
+                Button(action: {
+                    print("Clicked")
+                    self.shouldShowAlert = true
+                }) {
+                    Text("확인")
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(width: 80)
+                        .background(Color.blue)
+                        .cornerRadius(18)
+                }
+                .alert(isPresented: $shouldShowAlert, content: {
+                    Alert(title: Text("알림창입니다!"))
+                })
             }
         }
         .padding(30)
@@ -62,6 +74,8 @@ struct MyProjectCard: View {
 
 struct MyProjectCard_previes: PreviewProvider {
     static var previews: some View {
-        MyProjectCard()
+        Group {
+            MyProjectCard()
+        }
     }
 }
