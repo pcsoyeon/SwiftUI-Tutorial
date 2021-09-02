@@ -1,2 +1,2 @@
 # SwiftUI-Tutorial
-SwiftUI로 이것 저것 해보기
+SwiftUI 맛보기 🤤
